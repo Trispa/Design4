@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="style/index.css">
+    <script src="js/lib/socket.io.js"></script>
+    <script src="js/lib/jquery-2.2.1.min.js"></script>
+    <script src="js/client.js"></script>
+    <title></title>
+</head>
+<body>
+<h1>Commande module onduleur</h1>
+<div class="row" background="green">
+    <div class="col-md-6">
+
+        <div class="col-md-10 col-md-offset-1" id="map-section">
+            <img id="path">
+            <!--<video id="video" autoplay></video>-->
+            <button id="startComand" class="col-md-3 col-sm-12 col-xs-12 btn-lg btn-primary" onclick="startFromTreasure()">Demarrer Commande</button>
+            <button id="stopCommand" class="col-md-3 col-sm-12 col-xs-12 btn-lg btn-primary" onclick="startFromTarget()">Arreter Commande</button>
+        </div>
+
+    </div>
+    <div class="col-md-6">
+        <h4>Affichage des valeurs</h4>
+        <div class="col-md-8 col-sm-12 col-xs-12">
+            <div class="col-md-6 col-sm-3 col-xs-3">Tension A4:</div>
+            <div class="col-md-6 col-sm-3 col-xs-3" id="tensionA4">00</div>
+            <div class="col-md-6 col-sm-3 col-xs-3">Tension A5:</div>
+            <div class="col-md-6 col-sm-3 col-xs-3" id="tensionA5">00</div>
+            <div class="col-md-6 col-sm-3 col-xs-3">Tension A6 :</div>
+            <div class="col-md-6 col-sm-3 col-xs-3" id="tensionA6">00</div>
+            <div class="col-md-6 col-sm-3 col-xs-3">Tension A7 :</div>
+            <div class="col-md-6 col-sm-3 col-xs-3" id="tensionA7">00</div>
+            <div class="col-md-6 col-sm-3 col-xs-3">Temperature :</div>
+            <div class="col-md-6 col-sm-3 col-xs-3" id="temperature">00</div>
+            <div class="col-md-6 col-sm-3 col-xs-3">StatusClient :</div>
+            <div class="col-md-6 col-sm-3 col-xs-3" id="7">N/A</div>
+        </div>
+
+        <button id="buttonReset" class="col-md-3 col-sm-12 col-xs-12 btn-lg btn-primary" onclick="reset()">Reset</button>
+        <button id="error" class="col-md-3 col-sm-12 col-xs-12 btn-lg btn-danger" onclick="verifierError()">Error</button>
+        <button id="surtension" class="col-md-3 col-sm-12 col-xs-12 btn-lg btn-danger" onclick="verifierSurtention()">Surtension</button>
+        <button id="buttonVentillo" class="col-md-3 col-sm-12 col-xs-12 btn-lg btn-primary" onclick="demarrerVentillo()">Demarrer Ventillateur</button>
+        <button id="buttonPrecharge" class="col-md-3 col-sm-12 col-xs-12 btn-lg btn-primary" onclick="precharger()">Demarrer precharge</button>
+
+    </div>
+
+
+</div>
+</body>
+
+</html>
