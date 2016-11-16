@@ -1,27 +1,26 @@
-import  serialPortCommunicator
+import  SerialPortCommunicator
 import socket
 import sys
-sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# from socketIO_client import SocketIO
+from socketIO_client import SocketIO
 from threading import Thread
-spc = serialPortCommunicator()
-socketIO = sock('localhost', 63342)
+spc = SerialPortCommunicator.SerialPortCommunicator()
+socketIO = SocketIO('localhost', 8080)
 
 
-def verifierError(self):
-    self.serialPortCommunicator.verifierError()
+def verifierError():
+    spc.verifierError()
 def resetArduino(self):
-    self.serialPortCommunicator.resetArduino()
+    spc.resetArduino()
 
-def verifierSurtention(self):
-    self.serialPortCommunicator.verifierSurtention()
+def verifierSurtention():
+    spc.verifierSurtention()
 
-def affichage (self):
+def affichage ():
     print("affichage des tension")
     socketIO.emit('sendInfo',spc.lireTension())
 
 
-def precharger(self):
+def precharger():
     # TODO
     print("precharger")
 Thread(target=verifierError).start()

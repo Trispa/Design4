@@ -1,3 +1,4 @@
+console.log("here");
 var socket = io.connect();
 socket.on("statusInfo", function(msg){
     console.log(msg);
@@ -10,7 +11,9 @@ socket.on("sendInfo", function(data){
     $("#tensionA7").text(data["tensionA7"]);
     $("#tensionA7").text(data["temperature"]);
 });
-
+socket.on("/", function(){
+    $("#startComand").prop("disabled", true);
+})
 socket.on("demarrerCommande", function(){
     $("#startComand").prop("disabled", true);
 })

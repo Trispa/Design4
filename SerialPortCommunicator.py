@@ -28,7 +28,7 @@ class SerialPortCommunicator:
 
 
 
-    def __init__(self, bitrateArduino = 115200, arduinoPort = "COM24"):
+    def __init__(self, bitrateArduino = 115200, arduinoPort = "COM4"):
         # if platform.linux_distribution()[0].lower() == "Ubuntu".lower():
         #     arduinoPort = "/dev/serial/by-id/pci-FTDI_FT232R_USB_UART_A7007dag-if00-port0"
         # elif platform.linux_distribution()[0].lower() == "Fedora".lower():

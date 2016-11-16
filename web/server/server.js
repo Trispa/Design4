@@ -4,12 +4,9 @@ var express = require('express');
 var http = require('http');
 var https = require('https');
 var request = require('request');
-var obj = require("../Shared/config.json");
-var url=obj.url;
-var port=obj.port;
-
 var app = express();
 app.use(express.static('../Client/UI'));
+
 
 var server = http.createServer(app);
 var io = socket.listen(server);
@@ -17,6 +14,7 @@ var io = socket.listen(server);
 var allClients = [];
 var botClientStatus = "Not connected";
 var robot;
+
 
 io.on('connection', function (client) {
     allClients.push(socket);
@@ -43,7 +41,9 @@ io.on('connection', function (client) {
         var i = allClients.indexOf(client);
         allClients.splice(i, 1);
     });
-
+    client.on('/',function(){
+    io.emit('statusInfo');
+    });
     client.on('sendInfo', function(data){
         io.emit('sendInfo', data);
     });
@@ -57,6 +57,8 @@ io.on('connection', function (client) {
             io.emit('sendManchesterInfo', manchesterInfo);
         });
     });
+});
+
 
 //    client.on('readManchester', function(){
 //        console.log('readManchester');
@@ -76,8 +78,8 @@ io.on('connection', function (client) {
 //        io.emit('debugSendBotToTarget');
 //    });
 
-});
 
-server.listen(port, url);
+server.listen(8080, 'localhost');
+
 
 
