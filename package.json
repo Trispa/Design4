@@ -1,0 +1,29 @@
+{
+  "name": "libraries",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "dependencies": {
+    "connect": "^3.5.0",
+    "consolidate": "^0.14.5",
+    "express": "^4.14.0",
+    "mustache": "^2.3.0",
+    "request": "^2.78.0",
+    "socket.io": "^1.5.1",
+    "util": "^0.10.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Trispa/Design4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Trispa/Design4/issues"
+  },
+  "homepage": "https://github.com/Trispa/Design4#readme"
+}

@@ -1,10 +1,10 @@
 import  SerialPortCommunicator
-import socket
 import sys
+import time
 from socketIO_client import SocketIO
 from threading import Thread
-spc = SerialPortCommunicator.SerialPortCommunicator()
 socketIO = SocketIO('localhost', 8080)
+spc = SerialPortCommunicator.SerialPortCommunicator()
 
 
 def verifierError():
@@ -16,8 +16,11 @@ def verifierSurtention():
     spc.verifierSurtention()
 
 def affichage ():
-    print("affichage des tension")
-    socketIO.emit('sendInfo',spc.lireTension())
+    while(True):
+        tensions = spc.lireTension()
+        socketIO.emit('senInfo',tensions)
+        print('envoi des tensions')
+        time.sleep(5)
 
 
 def precharger():
@@ -31,3 +34,7 @@ Thread(target=affichage).start()
 
 socketIO.emit('verifierError', verifierError)
 socketIO.emit('verifierSurtention', verifierSurtention)
+socketIO.emit('sendCommandClientStatus', 'Connected')
+# socketIO.emit('sendInfo', affichage)
+
+socketIO.wait()

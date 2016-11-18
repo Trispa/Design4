@@ -1,15 +1,14 @@
-console.log("here");
 var socket = io.connect();
-socket.on("statusInfo", function(msg){
+socket.on("sendCommandClientStatus", function(msg){
     console.log(msg);
-    $("#state").text(msg);
+    $("#status").text(msg);
 });
 socket.on("sendInfo", function(data){
     $("#tensionA4").text(data["tensionA4"]);
-    $("#tensionA5").text(data["tensionA"]);
+    $("#tensionA5").text(data["tensionA5"]);
     $("#tensionA6").text(data["tensionA6"]);
     $("#tensionA7").text(data["tensionA7"]);
-    $("#tensionA7").text(data["temperature"]);
+    $("#temperature").text(data["temperature"]);
 });
 socket.on("/", function(){
     $("#startComand").prop("disabled", true);
@@ -34,7 +33,9 @@ function precharger(){
     socket.emit("precharger");
 }
 
+function verifierSurtention(){
 
+}
 
 // verification etat Erreur et etat tention (surtention)
 
