@@ -46,9 +46,6 @@ io.on('connection', function (client) {
     client.on('sendInfo', function(data){
         io.emit('sendInfo', data);
     });
-    client.on("verifierError", function(){
-        io.emit('verifierError')
-    });
 //
 //
 //

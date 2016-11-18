@@ -10,9 +10,6 @@ socket.on("sendInfo", function(data){
     $("#tensionA7").text(data["tensionA7"]);
     $("#temperature").text(data["temperature"]);
 });
-socket.on("/", function(){
-    $("#startComand").prop("disabled", true);
-})
 socket.on("demarrerCommande", function(){
     $("#startComand").prop("disabled", true);
 })
@@ -36,17 +33,14 @@ function precharger(){
 function verifierSurtention(){
 
 }
-function verifierError(){
-    socket.emit('verifierError')
-}
 
 // verification etat Erreur et etat tention (surtention)
 
-//socket.on("verifierError", function(data){
-//    if(data){
-//        //TODO changer la couleur en rouge  car il y a une erreur
-//        }
-//})
+socket.on("verifierError", function(data){
+    if(data){
+        //TODO changer la couleur en rouge  car il y a une erreur
+        }
+})
 
 socket.on("verifierSurtention", function(data){
     if(data){
