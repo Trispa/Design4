@@ -36,14 +36,17 @@ function precharger(){
 function verifierSurtention(){
 
 }
+function verifierError(){
+    socket.emit('verifierError')
+}
 
 // verification etat Erreur et etat tention (surtention)
 
-socket.on("verifierError", function(data){
-    if(data){
-        //TODO changer la couleur en rouge  car il y a une erreur
-        }
-})
+//socket.on("verifierError", function(data){
+//    if(data){
+//        //TODO changer la couleur en rouge  car il y a une erreur
+//        }
+//})
 
 socket.on("verifierSurtention", function(data){
     if(data){
