@@ -28,7 +28,7 @@ class SerialPortCommunicator:
 
 
 
-    def __init__(self, bitrateArduino = 115200, arduinoPort = "COM24"):
+    def __init__(self, bitrateArduino = 115200, arduinoPort = "COM4"):
         # if platform.linux_distribution()[0].lower() == "Ubuntu".lower():
         #     arduinoPort = "/dev/serial/by-id/pci-FTDI_FT232R_USB_UART_A7007dag-if00-port0"
         # elif platform.linux_distribution()[0].lower() == "Fedora".lower():
@@ -85,7 +85,7 @@ class SerialPortCommunicator:
         print(rep)
 
     def lireTension(self):
-        # rep = self.sendCommand(self.LIRE_TENSIONS, self.TRUE, self.ONE_SECOND_DELAY, 1);
+        #rep = self.sendCommand(self.LIRE_TENSIONS, self.TRUE, self.ONE_SECOND_DELAY, 1);
         rep = {'tensionA4':12,'tensionA5':1652,'tensionA6':32,'tensionA7':162,'temperature':132}
         return (rep)
     # def turnOnEndingLED(self):
@@ -145,4 +145,6 @@ class SerialPortCommunicator:
 if __name__ == "__main__":
     spc = SerialPortCommunicator()
     while(1):
-        spc.lireTension()
+        #spc.lireTension()
+        #spc.verifierSurtention()
+        spc.verifierError()

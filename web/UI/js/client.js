@@ -9,6 +9,7 @@ socket.on("sendInfo", function(data){
     $("#tensionA6").text(data["tensionA6"]);
     $("#tensionA7").text(data["tensionA7"]);
     $("#temperature").text(data["temperature"]);
+
 });
 socket.on("demarrerCommande", function(){
     $("#startComand").prop("disabled", true);
@@ -38,39 +39,13 @@ function verifierSurtention(){
 
 socket.on("verifierError", function(data){
     if(data){
-        //TODO changer la couleur en rouge  car il y a une erreur
+        $("#error").attr('class', 'col-md-3 col-sm-12 col-xs-12 btn-lg btn-danger');
         }
-})
+});
 
 socket.on("verifierSurtention", function(data){
+    console.log(data);
     if(data){
-        //TODO changer la couleur en rouge  car il y a une erreur
+        $("#surtension").attr('class', 'col-md-3 col-sm-12 col-xs-12 btn-lg btn-danger');
         }
 })
-//Debug section calls
-
-/*function sendBotToChargingStation(){
-    socket.emit("debugSendBotToChargingStation");
-}
-function alignBotToChargingStation(){
-    socket.emit("debugAlignBotToChargingStation");
-}
-function searchAllTreasure(){
-    socket.emit("debugSearchAllTreasure");
-}
-function sendBotToTreasure(){
-    socket.emit("debugSendBotToTreasure");
-}
-function alignBotToTreasure(){
-    socket.emit("debugAlignBotToTreasure");
-}
-function sendBotToTarget(){
-    socket.emit("debugSendBotToTarget");
-}
-function alignBotToTarget(){
-    socket.emit("debugAlignBotToTarget");
-}
-function initializeWorld(){
-    socket.emit("initializeWorld");
-}
-*/
