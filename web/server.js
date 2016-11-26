@@ -42,7 +42,9 @@ io.on('connection', function (client) {
 //        io.emit('reset', status);
 //    });
 
-
+    client.on('arreterCommande',function(){
+        io.emit('arreterCommande')
+    })
     client.on('sendInfo', function(data){
         io.emit('sendInfo', data);
     });

@@ -18,6 +18,12 @@ function demarrerCommande(){
     console.log("command launch");
     socket.emit("demarrerCommande");
 }
+//Arreter la commande
+
+function arrerCommande(){
+    console.log("arreter commande");
+    socket.emit("arrerterCommande");
+}
 function reset(){
     $("#buttonGo").prop("disabled",false);
 }
@@ -34,6 +40,7 @@ function verifierSurtention(){
 
 }
 
+
 // verification etat Erreur et etat tention (surtention)
 
 socket.on("verifierError", function(data){
@@ -47,6 +54,8 @@ socket.on("verifierSurtention", function(data){
         //TODO changer la couleur en rouge  car il y a une erreur
         }
 })
+
+
 //Debug section calls
 
 /*function sendBotToChargingStation(){

@@ -12,7 +12,7 @@
 class CommandReceiver {
 public:
 	CommandReceiver();
-  CommandReceiver(Command* cmd);
+	CommandReceiver(Command* cmd);
 
 	void executeCommand();
 	void process();

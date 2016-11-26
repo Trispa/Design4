@@ -7,6 +7,8 @@ socketIO = SocketIO('localhost', 8080)
 spc = SerialPortCommunicator.SerialPortCommunicator()
 
 
+def arreterCommande():
+    spc.arreterCommande()
 def verifierError():
     spc.verifierError()
 def resetArduino(self):
@@ -21,7 +23,7 @@ def affichage ():
         tensions = spc.lireTension()
         socketIO.emit('sendInfo',tensions)
         print('envoi des tensions')
-        time.sleep(5)
+        time.sleep(2)
 
 
 def precharger():
@@ -33,9 +35,10 @@ Thread(target=affichage).start()
 
 
 
-socketIO.emit('verifierError', verifierError)
-socketIO.emit('verifierSurtention', verifierSurtention)
+#socketIO.emit('verifierError', verifierError)
+#socketIO.emit('verifierSurtention', verifierSurtention)
 socketIO.emit('sendCommandClientStatus', 'Connected')
 # socketIO.emit('sendInfo', valeurTension)
 
+socketIO.on('arreterCommande',arreterCommande)
 socketIO.wait()

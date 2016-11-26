@@ -96,6 +96,9 @@ void CommandReceiver::dispatchCommand() {
     case 6: // surtension
         cm->verifieSurIntensite(A1);
         break;
+    case 7: // arreter Commande
+        cm->arreterCommand();
+        break;
  	default: //for test purposes
 		if(callbackRequested == 1) {
 			sendCallback(parameters[0]);

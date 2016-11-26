@@ -4,8 +4,12 @@ Command com ();
 int pinErr1 = 19;
 int pinErr2 = 20;
 int pinErr3 = 21;
+int onOffPin = 2;
+int internExterneMode = 3;
+int relaisPin = 8;
 volatile unsigned int IntensiteMAx = 100;
 volatile unsigned int stateError = 0;
+volatile unsigned int allowCommande = 0;
 int valPin;
 int margeErreur = 10;
 Command::Command()
@@ -15,16 +19,38 @@ Command::Command()
   pinMode(pinErr3, INPUT);
   _stateErr = 0;
   _signalSurtension =0;
+  _allowCommande = 0;
   attachInterrupt(digitalPinToInterrupt(pinErr1), errorInterrupt, CHANGE);
   attachInterrupt(digitalPinToInterrupt(pinErr2), errorInterrupt, CHANGE);
   attachInterrupt(digitalPinToInterrupt(pinErr3), errorInterrupt, CHANGE);
+  attachInterrupt(digitalPinToInterrupt(onOffPin), onOff, CHANGE);
+  attachInterrupt(digitalPinToInterrupt(internExterneMode), modeCommande, CHANGE);
+
 
 }
+
+void Command::onOff(){
+
+	digitalWrite(relaisPin, HIGH);
+	delay(3000);
+	allowCommande = 1;
+}	
+	
+void Command::modeCommande(){
+	//TODO
+}
+
 void Command::arreterCommand()
 {
 	digitalWrite(11, LOW);
     digitalWrite(12, LOW);
     digitalWrite(13, LOW);
+}
+
+int Command::getAllowCommande()
+{
+    _allowCommande = allowCommande;
+    return this->_allowCommande;
 }
 
 int Command::getStatError()

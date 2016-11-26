@@ -16,6 +16,7 @@ class SerialPortCommunicator:
     LIRE_TENSIONS = 4
     DEMARRER_VENTILO = 5
     CHECKSURTENTION = 6
+    ARRETER_COMMANDE = 7
     # CHANGE_SPEED_LINE = 7
     # CHANGE_SPEED_ROTATION = 8
     # CHANGE_CONDENSATOR_MODE = 9
@@ -71,6 +72,9 @@ class SerialPortCommunicator:
     def verifierError(self):
         rep = self.sendCommand(self.ARRETER_DRIVERS, self.TRUE, self.ONE_SECOND_DELAY, 1);
         print(rep)
+
+    def arreterCommande(self):
+        self.sendCommand(self.ARRETER_COMMANDE, self.FALSE, self.ONE_SECOND_DELAY, 1);
 
     def resetArduino (self):
         self.arduino.setDTR(False)
