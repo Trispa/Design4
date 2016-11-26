@@ -1,7 +1,7 @@
 {
   "name": "libraries",
   "version": "1.0.0",
-  "description": "",
+  "description": "Pour plus d'information sur l'installation des biblioth�ques, regardez: http://www.arduino.cc/en/Guide/Libraries",
   "main": "index.html",
   "dependencies": {
     "connect": "^3.5.0",

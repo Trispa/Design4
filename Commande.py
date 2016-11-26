@@ -18,11 +18,15 @@ def verifierSurtention():
     spc.verifierSurtention()
 def valeurTension():
     spc.lireTension()
-def affichage ():
+def refresh ():
     while(True):
         tensions = spc.lireTension()
+        error = spc.verifierError()
+        surtention = spc.verifierSurtention()
         socketIO.emit('sendInfo',tensions)
-        print('envoi des tensions')
+        socketIO.emit('verifierSurtention',surtention)
+        socketIO.emit('verifierError', error)
+        print('envoi des tensions , verification urtension, et verification erreur driver')
         time.sleep(2)
 
 
@@ -31,7 +35,7 @@ def precharger():
     print("precharger")
 # Thread(target=verifierError).start()
 # Thread(target=verifierSurtention).start()
-Thread(target=affichage).start()
+Thread(target=refresh).start()
 
 
 

@@ -48,6 +48,12 @@ io.on('connection', function (client) {
     client.on('sendInfo', function(data){
         io.emit('sendInfo', data);
     });
+    client.on('verifierError', function(data){
+        io.emit('verifierError', data);
+    });
+    client.on('verifierSurtention',function(data){
+        io.emit('verifierSurtention', data);
+    });
 //
 //
 //
