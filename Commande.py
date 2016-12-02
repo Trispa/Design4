@@ -8,6 +8,7 @@ spc = SerialPortCommunicator.SerialPortCommunicator()
 
 
 def arreterCommande():
+    print('backend : arreter com')
     spc.arreterCommande()
 def verifierError():
     spc.verifierError()
@@ -20,13 +21,13 @@ def valeurTension():
     spc.lireTension()
 def refresh ():
     while(True):
-        tensions = spc.lireTension()
-        error = spc.verifierError()
-        surtention = spc.verifierSurtention()
-        socketIO.emit('sendInfo',tensions)
-        socketIO.emit('verifierSurtention',surtention)
-        socketIO.emit('verifierError', error)
-        print('envoi des tensions , verification urtension, et verification erreur driver')
+        # tensions = spc.lireTension()
+        # error = spc.verifierError()
+        # surtention = spc.verifierSurtention()
+        # socketIO.emit('sendInfo',tensions)
+        # socketIO.emit('verifierSurtention',surtention)
+        # socketIO.emit('verifierError', error)
+        # print('envoi des tensions , verification urtension, et verification erreur driver')
         time.sleep(2)
 
 

@@ -21,9 +21,9 @@ function demarrerCommande(){
 }
 //Arreter la commande
 
-function arrerCommande(){
-    console.log("arreter commande");
-    socket.emit("arrerterCommande");
+function arreterCommande(){
+    console.log("client :arreter commande");
+    socket.emit("arreterCommande");
 }
 function reset(){
     $("#buttonGo").prop("disabled",false);

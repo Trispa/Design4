@@ -42,10 +42,11 @@ io.on('connection', function (client) {
 //        io.emit('reset', status);
 //    });
 
-    client.on('arreterCommande',function(){
-        io.emit('arreterCommande')
+    client.on("arreterCommande",function(){
+        console.log('server : arreter Commande');
+        io.emit("arreterCommande");
     })
-    client.on('sendInfo', function(data){
+    client.on("sendInfo", function(data){
         io.emit('sendInfo', data);
     });
     client.on('verifierError', function(data){

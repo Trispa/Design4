@@ -1,3 +1,4 @@
+
 import serial
 from time import sleep
 import struct
@@ -29,7 +30,7 @@ class SerialPortCommunicator:
 
 
 
-    def __init__(self, bitrateArduino = 115200, arduinoPort = "COM4"):
+    def __init__(self, bitrateArduino = 115200, arduinoPort = "COM24"):
         # if platform.linux_distribution()[0].lower() == "Ubuntu".lower():
         #     arduinoPort = "/dev/serial/by-id/pci-FTDI_FT232R_USB_UART_A7007dag-if00-port0"
         # elif platform.linux_distribution()[0].lower() == "Fedora".lower():
@@ -92,57 +93,6 @@ class SerialPortCommunicator:
         #rep = self.sendCommand(self.LIRE_TENSIONS, self.TRUE, self.ONE_SECOND_DELAY, 1);
         rep = {'tensionA4':12,'tensionA5':1652,'tensionA6':32,'tensionA7':162,'temperature':132}
         return (rep)
-    # def turnOnEndingLED(self):
-    #     self.sendCommand(self.LED_FUNCTION_ON, self.FALSE, self.ONE_SECOND_DELAY, 1)
-    #
-    # def turnOffEndingLED(self):
-    #     self.sendCommand(self.LED_FUNCTION_OFF, self.FALSE, self.ONE_SECOND_DELAY, 1)
-    #
-    # def driveMoteur(self, noMoteur, speed, direction):
-    #     self.sendCommand(self.CHANGE_SINGLE_MOTEUR_SPEED, self.FALSE, self.ONE_SECOND_DELAY, noMoteur, speed * 100, direction)
-    #
-    # def stopAllMotor(self):
-    #     self.sendCommand(self.STOP_ALL_MOTEUR, self.FALSE, self.ONE_SECOND_DELAY, 1)
-    #
-    # def driveMoteurLine(self, axe, speed, positif, distance):
-    #     tmpVoltage = self.sendCommand(self.CHANGE_SPEED_LINE, self.TRUE, self.ONE_SECOND_DELAY, axe, speed * 100, positif, distance * 100)
-    #
-    #     if tmpVoltage == '':
-    #         self.tensionCondensateur = 0
-    #     else:
-    #         self.tensionCondensateur = float(tmpVoltage) / 100.0
-    #
-    #
-    # def driveMoteurLinePrecision(self, axe, speed, positif, distance):
-    #
-    #     self.sendCommand(self.CHANGE_SPEED_LINE, self.FALSE, self.ONE_SECOND_DELAY, axe, speed * 100, positif,
-    #                      distance * 100)
-    #
-    #
-    # def driveMoteurRotation(self, speed, direction, angle):
-    #     tmpVoltage = self.sendCommand(self.CHANGE_SPEED_ROTATION, self.TRUE, self.ONE_SECOND_DELAY, speed * 100, direction, angle * 100)
-    #     if tmpVoltage == '':
-    #         self.tensionCondensateur = 0
-    #     else:
-    #         self.tensionCondensateur = float(tmpVoltage) / 100.0
-
-    #/controle electro aiment 00 decharge 10 ou 01 garde la charge 11 pour recharger
-    # // 0 decharge magnetique
-    # // 1 ou else garde charge
-    # // 2 rechargesendCommand
-    # def changeCondensatorMode(self, mode):
-    #     self.sendCommand(self.CHANGE_CONDENSATOR_MODE, self.FALSE, self.ONE_SECOND_DELAY, mode)
-    #
-    # def readConsensatorVoltage(self):
-    #     tmpTempo = self.sendCommand(self.LED_FUNCTION_ON, self.TRUE, self.ONE_SECOND_DELAY, 1)
-    #     if tmpTempo == '':
-    #         self.tensionCondensateur = 0
-    #     else:
-    #         self.tensionCondensateur = float(tmpTempo) / 100.0
-    #     return self.tensionCondensateur
-    #
-    # def getTensionCondensateur(self):
-    #     return self.tensionCondensateur
 
 
 

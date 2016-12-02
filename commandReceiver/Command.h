@@ -4,15 +4,16 @@ class Command
 {
   public :
     Command();
+	
+	static void onOff();
     void arreterCommand();
     void demarrerCommand();
-    void precharger();
-	static void onOff();
-	static void modeCommande();
-	int getAllowCommande();
-    int lireTension(unsigned int pin);
-    void verifieSurIntensite(unsigned int pin);
+	static void modeCommande(); // interne ou externe
     void demarrerVentilateur(int pin);
+	int getAllowCommande();
+    void verifieSurIntensite(unsigned int pin);
+	void allumerLed();
+    int lireTension(unsigned int pin);
     int getStatError();
     int getSignalSurtension();
     static void errorInterrupt();
