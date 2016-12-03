@@ -31,8 +31,8 @@ void GenerateurPWM::set_sinus_table(float amp) {
   float dt = 2*3.1415926/NECHANT;
   for(i=0; i<NECHANT; i++) {
     table_onde[i] = icr*0.5*(1.0+amp*sin(i*dt));
-    table_onde2[i] = icr*0.5*(1.0+amp*sin(i*dt + 0.69)); // Par essai erreur la valeur de 0,69 donne le bon dephasage du signal 1 par rapport au signal 2
-    table_onde3[i] = icr*0.5*(1.0+amp*sin(i*dt - 1.8)); // Par essai erreur la valeur de 0,-1.8 donne le bon dephasage du signal 1 par rapport au signal 2
+    table_onde2[i] = icr*0.5*(1.0+amp*sin(i*dt + 0.5)); // Par essai erreur la valeur de 0,69 donne le bon dephasage du signal 1 par rapport au signal 2
+    table_onde3[i] = icr*0.5*(1.0+amp*sin(i*dt - 2.1)); // Par essai erreur la valeur de 0,-1.8 donne le bon dephasage du signal 1 par rapport au signal 2
     //Serial.println(table_onde3[i]); 
   } 
 }

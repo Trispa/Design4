@@ -13,11 +13,16 @@ volatile unsigned int allowCommande = 0;
 int tensionCondensateur ;
 int valPin;
 int margeErreur = 10;
+int state = HIGH;      // the current state of the output pin
+int reading;           // the current reading from the input pin
+int previous = LOW;
+int pinFreq = 21;
 Command::Command()
 {
   pinMode(pinErr1, INPUT);
   pinMode(pinErr2, INPUT);
   pinMode(pinErr3, INPUT);
+  pinMode(pinFreq, INPUT);
   _stateErr = 0;
   _signalSurtension =0;
   _allowCommande = 0;
@@ -59,7 +64,7 @@ int Command::getAllowCommande()
 
 int Command::getStatError()
 {
-    _stateErr = stateError;
+    this->_stateErr = stateError;
     return this->_stateErr;
 }
 void Command::verifieSurIntensite(unsigned int pin){
@@ -82,8 +87,11 @@ int Command::lireTension(unsigned int pin){
     return valPin;
 }
 void Command::errorInterrupt(){
-    if(digitalRead(pinErr1) == HIGH || digitalRead(pinErr2) == HIGH ||digitalRead(pinErr2)== HIGH)
-        stateError = 1;
-    else
+    if(digitalRead(pinErr1) == LOW && digitalRead(pinErr2) == LOW && digitalRead(pinErr2)== LOW)
         stateError = 0;
+    else
+        stateError = 1;
+}
+void Command::switchFreq(unsigned int pin){
+//TODO
 }

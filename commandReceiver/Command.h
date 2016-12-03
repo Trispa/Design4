@@ -8,11 +8,13 @@ class Command
 	static void onOff();
     void arreterCommand();
     void demarrerCommand();
+	
 	static void modeCommande(); // interne ou externe
-    void demarrerVentilateur(int pin);
+    void demarrerVentilateur(unsigned int pin);
 	int getAllowCommande();
     void verifieSurIntensite(unsigned int pin);
 	void allumerLed();
+	int switchFreq(unsigned int pin);
     int lireTension(unsigned int pin);
     int getStatError();
     int getSignalSurtension();
