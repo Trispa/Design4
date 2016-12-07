@@ -14,15 +14,19 @@ class Command
 	int getAllowCommande();
     void verifieSurIntensite(unsigned int pin);
 	void allumerLed();
-	int switchFreq(unsigned int pin);
+	static void  switchFreq();
     int lireTension(unsigned int pin);
     int getStatError();
+	void setStatError(int val);
     int getSignalSurtension();
+	int getAmp();
+	bool defaultPeriode();
     static void errorInterrupt();
   private:
     int _stateErr;
     int _signalSurtension;
     int _allowCommande;
+	int _amp;
 };
 
 #endif
