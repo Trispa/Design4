@@ -1,8 +1,26 @@
 #include "generateurPWM.h"
 
  
+GenerateurPWM::GenerateurPWM(){
+	this->_period_pwm = (digitalRead(50) == HIGH)?80:160;
+	this->_frequence = 60;
+	this->accum1 = 0;
+	this->accum2 = ((uint32_t)(NECHANT * 0.25)) << SHIFT_ACCUM;
+	this->accum3 = 0;
+	this->increm = (uint32_t) (((float)(0xFFFFFFFF))*((float)(this->_frequence)*1e-6*(float)(this->_period_pwm))); // incrément de l'accumulateur de phase		
+}
 
-void GenerateurPWM::init_pwm_timer1(uint32_t period) {
+void GenerateurPWM::set_period_pwm(uint32_t period_pwm){
+	this->_period_pwm = period_pwm;
+}
+uint32_t GenerateurPWM::get_period_pwm(){
+	return this->_period_pwm;
+}
+void GenerateurPWM::set_frequence(uint32_t frequence){
+	this->_frequence = frequence;
+}
+	
+void GenerateurPWM::init_pwm_timer1() {
     char clockBits;
     TCCR1A = 0;
     TCCR1A |= (1 << COM1A1); //Clear OC1A on compare match when upcounting, set OC1A on compare match when downcounting
@@ -12,10 +30,10 @@ void GenerateurPWM::init_pwm_timer1(uint32_t period) {
 #endif
     TCCR1B = 1 << WGM13; // phase and frequency correct pwm mode, top = ICR1
     int d = 1;
-    icr = (F_CPU/1000000*period/2);
+    icr = (F_CPU/1000000*this->_period_pwm/2);
     while ((icr>0xFFFF)&&(d<6)) { // choix du diviseur d'horloge
         d++;
-        icr = (F_CPU/1000000*period/2/diviseur[d]);
+        icr = (F_CPU/1000000*this->_period_pwm/2/diviseur[d]);
    } 
    clockBits = d;
    ICR1 = icr; // valeur maximale du compteur
